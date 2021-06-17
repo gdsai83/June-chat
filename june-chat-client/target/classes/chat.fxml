@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="center" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.geekbrains.june.chat.client.Controller">
+<VBox alignment="center" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.geekbrains.june.chat.client.Controller">
     <TextArea fx:id="chatArea" editable="false" VBox.vgrow="ALWAYS"/>
     <HBox>
         <TextField fx:id="messageField" HBox.hgrow="ALWAYS" onAction="#sendMessage"/>
