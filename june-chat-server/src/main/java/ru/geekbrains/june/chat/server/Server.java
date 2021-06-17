@@ -26,14 +26,21 @@ public class Server {
 
     public synchronized void subscribe(ClientHandler c) {
         clients.add(c);
-        // Сделайте так, чтобы при выполнении этого метода сервер сообщал всем клиентам
-        // что в чат зашел клиент (+его имя указывал)
+        broadcastMessage(c.getUsername() + " вошел в чат");
     }
 
     public synchronized void unsubscribe(ClientHandler c) {
         clients.remove(c);
-        // Сделайте так, чтобы при выполнении этого метода сервер сообщал всем клиентам
-        // что из чата вышел клиент (+его имя указывал)
+        broadcastMessage(c.getUsername() + " вышел из чата");
+    }
+
+    public boolean isNameSame(String name) {
+        for (int i = 0; i < clients.size(); i++) {
+            if (clients.get(i).getUsername().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public synchronized void broadcastMessage(String message) {

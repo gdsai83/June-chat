@@ -7,8 +7,7 @@ public class ServerApp {
     2. * Доработать методы subscribe и unsubscribe
     3. *** Запретить пользователям входить под именем, которое уже занято
     */
-    public static void main(String[] args) {
-        new Server();
+    public static void main(String[] args) { new Server();
     }
 }
 

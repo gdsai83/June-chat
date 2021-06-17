@@ -23,10 +23,14 @@ public class ClientHandler {
                     while (true) {
                         String inputMessage = in.readUTF();
                         if (inputMessage.startsWith("/auth ")) { // /auth bob
-                            username = inputMessage.split("\\s+", 2)[1];
-                            sendMessage("/authok");
-                            server.subscribe(this);
-                            break;
+                            if (!server.isNameSame(inputMessage.split("\\s+", 2)[1])) {
+                                username = inputMessage.split("\\s+", 2)[1];
+                                sendMessage("/authok");
+                                server.subscribe(this);
+                                break;
+                            } else {
+                                sendMessage("SERVER: Данное имя уже используется, укажите другое");
+                            }
                         } else {
                             sendMessage("SERVER: Вам необходимо авторизоваться");
                         }
@@ -55,5 +59,9 @@ public class ClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
